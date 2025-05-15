@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PROG3A_Part2.Models.Product>
+
+@{
+    ViewData["Title"] = "My Products";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #8ec5fc, #e0c3fc);
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>My Products</h2>
+        <a class="btn btn-success" asp-action="AddProduct">Add New Product</a>
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            You haven't added any products yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped"><!--Table which displays all products added by a farmer, corrected and debugged by ClaudeAi-->
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Production Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Category</td>
+                        <td>@product.ProductionDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+<!--******************************************************************End Of File******************************************************************-->

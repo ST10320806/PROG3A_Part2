@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #8ec5fc, #e0c3fc);
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container text-center mt-5">
+    <h1 class="display-4 mb-4">Welcome to the Farmer Product Management System</h1>
+    <p class="lead">Select your role to log in</p>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4">
+                <h4>Farmer</h4>
+                <p>Log in to manage your products</p>
+                <a asp-controller="Farmer" asp-action="Login" class="btn btn-success">Login as Farmer</a>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card shadow-sm p-4">
+                <h4>Employee</h4>
+                <p>Log in to manage farmers and product records</p>
+                <a asp-controller="Employee" asp-action="Login" class="btn btn-primary">Login as Employee</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--******************************************************************End Of File******************************************************************-->

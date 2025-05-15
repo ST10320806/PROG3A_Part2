@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PROG3A_Part2.Models.Product>
+
+@{
+    ViewData["Title"] = "Filter Products";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #8ec5fc, #e0c3fc);
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Filter Products</h2>
+    <form asp-action="FilterProducts" method="get" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <label>Category</label>
+            <input type="text" name="category" class="form-control" placeholder="e.g. Vegetable" />
+        </div>
+        <div class="col-md-3">
+            <label>Start Date</label>
+            <input type="date" name="startDate" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label>End Date</label>
+            <input type="date" name="endDate" class="form-control" />
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Apply Filter</button>
+        </div>
+    </form>
+    <table class="table table-bordered table-striped"><!--Table which displays products, corrected and debugged by ClaudeAi-->
+        <thead class="table-light">
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Production Date</th>
+                <th>Farmer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Category</td>
+                    <td>@product.ProductionDate.ToShortDateString()</td>
+                    <td>@product.Farmer?.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<!--******************************************************************End Of File******************************************************************-->

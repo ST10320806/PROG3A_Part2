@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+    var isFarmer = Context.Session.GetInt32("FarmerId") != null;
+    var isEmployee = Context.Session.GetInt32("EmployeeId") != null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Farmer Product App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">Farmer Product App</a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+
+                    @if (isFarmer)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Farmer/MyProducts">My Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Logout">Logout</a>
+                        </li>
+                    }
+                    else if (isEmployee)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/FarmerList">Farmer List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/FilterProducts">Filter Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Dashboard</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year - Farmer Product Management System</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Employee Login";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #8ec5fc, #e0c3fc);
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-sm p-4">
+                <h3 class="text-center mb-3">Employee Login</h3>
+                <form method="post" asp-action="Login">
+                    <div class="form-group mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" required />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" required />
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="text-danger text-center mt-3">@ViewBag.Error</div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--******************************************************************End Of File******************************************************************-->
