@@ -14,12 +14,15 @@ namespace PROG3A_Part2.Repository
             => _context.Products.Where(p => p.FarmerId == farmerId).ToList();
 
         //Method for the filering of products by category and date range
-        public IEnumerable<Product> FilterProducts(string category, DateTime? startDate, DateTime? endDate)
+        public IEnumerable<Product> FilterProducts(string category, DateTime? productionDate)
         {
             var query = _context.Products.Include(p => p.Farmer).AsQueryable();
             if (!string.IsNullOrEmpty(category)) query = query.Where(p => p.Category == category);
-            if (startDate.HasValue) query = query.Where(p => p.ProductionDate >= startDate);
-            if (endDate.HasValue) query = query.Where(p => p.ProductionDate <= endDate);
+            if (productionDate.HasValue)
+            {
+                query = query.Where(p =>
+                    p.ProductionDate.Date == productionDate.Value.Date);
+            }
             return query.ToList();
         }
 

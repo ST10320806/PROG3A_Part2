@@ -52,9 +52,9 @@ public class EmployeeController : Controller
     }
 //*********************************************************************************************************************
 
-    public IActionResult FilterProducts(string category, DateTime? startDate, DateTime? endDate)
+    public IActionResult FilterProducts(string category, DateTime? productionDate)
     {
-        var products = _productRepo.FilterProducts(category, startDate, endDate);
+        var products = _productRepo.FilterProducts(category, productionDate);
         return View(products);
     }
 }
