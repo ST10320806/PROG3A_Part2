@@ -4,7 +4,7 @@ namespace PROG3A_Part2.Repository
 {
     public interface IEmployeeRepository
     {
-        Employee GetByCredentials(string email, string password);
+        Employee GetByCredentials(string email, string password);//Method for authenticating employee credentials
     }
 }
 //******************************************************************End Of File******************************************************************

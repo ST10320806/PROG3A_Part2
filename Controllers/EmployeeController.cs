@@ -21,16 +21,16 @@ public class EmployeeController : Controller
     public IActionResult Login() => View();
 
     [HttpPost]
-    public IActionResult Login(string email, string password)
+    public IActionResult Login(string email, string password)//Method for the login of employees
     {
-        var employee = _employeeRepo.GetByCredentials(email, password);
+        var employee = _employeeRepo.GetByCredentials(email, password);//Calling credentials from the repository
         if (employee != null)
         {
             HttpContext.Session.SetInt32("EmployeeId", employee.Id);
             return RedirectToAction("FarmerList");
         }
 
-        ViewBag.Error = "Invalid login credentials.";
+        ViewBag.Error = "Invalid login credentials.";// Error message for invalid login 
         return View();
     }
 //*********************************************************************************************************************
@@ -38,23 +38,23 @@ public class EmployeeController : Controller
     public IActionResult AddFarmer() => View();
 
     [HttpPost]
-    public IActionResult AddFarmer(Farmer farmer)
+    public IActionResult AddFarmer(Farmer farmer)//Method for adding a farmer to the database
     {
         _farmerRepo.Add(farmer);
         return RedirectToAction("FarmerList");
     }
 //*********************************************************************************************************************
 
-    public IActionResult FarmerList()
+    public IActionResult FarmerList()//Method for displaying the list of farmers
     {
-        var farmers = _farmerRepo.GetAll();
+        var farmers = _farmerRepo.GetAll();//Getting all farmers from the database via the repository
         return View(farmers);
     }
 //*********************************************************************************************************************
 
-    public IActionResult FilterProducts(string category, DateTime? productionDate)
+    public IActionResult FilterProducts(string category, DateTime? productionDate)//Action for the filtering of products
     {
-        var products = _productRepo.FilterProducts(category, productionDate);
+        var products = _productRepo.FilterProducts(category, productionDate);//Call repo to filter based off category and production date
         return View(products);
     }
 }

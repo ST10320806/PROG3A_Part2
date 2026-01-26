@@ -3,13 +3,13 @@ using PROG3A_Part2.Models;
 
 namespace PROG3A_Part2.Repository
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository//implements the interface
     {
-        private readonly AppDbContext _context;
-        public EmployeeRepository(AppDbContext context) => _context = context;
+        private readonly AppDbContext _context;//store database context instance
+        public EmployeeRepository(AppDbContext context) => _context = context;//Deoenpendency injection of the database context 
 
-        public Employee GetByCredentials(string email, string password)
-            => _context.Employees.FirstOrDefault(e => e.Email == email && e.Password == password);
+        public Employee GetByCredentials(string email, string password)//Authenticating employee credentials
+            => _context.Employees.FirstOrDefault(e => e.Email == email && e.Password == password);//Gets first matching employee if credentials are valid
     }
 }
 //Code corrected and debugged by ClaudeAi
