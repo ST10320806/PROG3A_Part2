@@ -15,7 +15,7 @@ namespace PROG3A_Part2.Data
                 var farmer1 = new Farmer { Name = "John Doe", Email = "john@example.com", Password = "pass123" };
                 var farmer2 = new Farmer { Name = "Jane Smith", Email = "jane@example.com", Password = "pass456" };
 
-                var employee = new Employee { Name = "Alice Admin", Email = "admin@example.com", Password = "adminpass" };//admin seed login
+                var employee = new Employee { Name = "Admin", Email = "admin@example.com", Password = "adminpass" };//admin seed login
 
                 context.Farmers.AddRange(farmer1, farmer2);
                 context.Employees.Add(employee);
